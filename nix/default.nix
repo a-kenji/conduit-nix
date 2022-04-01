@@ -66,11 +66,11 @@ flake-utils.lib.eachSystem [
 in rec {
   # crate2nix - better incremental builds, but uses ifd
   #packages.conduit = crate2nixPkgs.callPackage ./crate2nix.nix {
-    #inherit
-      #name
-      #src
-      #crate2nix
-      #;
+  #inherit
+  #name
+  #src
+  #crate2nix
+  #;
   #};
 
   # native nixpkgs support - keep supported
