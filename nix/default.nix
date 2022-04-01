@@ -38,7 +38,7 @@ flake-utils.lib.eachSystem [
   src = pkgs.nix-gitignore.gitignoreSource ignoreSource root;
 
   rustToolchainToml = pkgs.rust-bin.fromRustupToolchainFile ../rust-toolchain.toml;
-  cargoLockFile = (conduit + /Cargo.lock);
+  cargoLockFile = conduit + /Cargo.lock;
 
   cargo = rustToolchainToml;
   rustc = rustToolchainToml;
@@ -62,9 +62,7 @@ flake-utils.lib.eachSystem [
     pkgs.alejandra
     pkgs.treefmt
   ];
-
   # TODO add meta
-
 in rec {
   # crate2nix - better incremental builds, but uses ifd
   packages.conduit = crate2nixPkgs.callPackage ./crate2nix.nix {
@@ -81,14 +79,14 @@ in rec {
       src
       name
       ;
-      cargoLock = {
-          lockFile = src + "/Cargo.lock";
-  outputHashes = {
-    "heed-0.10.6" = "sha256-rm02pJ6wGYN4SsAbp85jBVHDQ5ITjZZd+79EC2ubRsY=";
-    "reqwest-0.11.9" = "sha256-wH/q7REnkz30ENBIK5Rlxnc1F6vOyuEANMHFmiVPaGw";
-    "ruma-0.4.0" = "sha256-gRhhGWpMiLeA8TNgBMsFEBky1TISr/GXNxLpTXLgUQE";
-  };
-};
+    cargoLock = {
+      lockFile = src + "/Cargo.lock";
+      outputHashes = {
+        "heed-0.10.6" = "sha256-rm02pJ6wGYN4SsAbp85jBVHDQ5ITjZZd+79EC2ubRsY=";
+        "reqwest-0.11.9" = "sha256-wH/q7REnkz30ENBIK5Rlxnc1F6vOyuEANMHFmiVPaGw";
+        "ruma-0.4.0" = "sha256-gRhhGWpMiLeA8TNgBMsFEBky1TISr/GXNxLpTXLgUQE";
+      };
+    };
   };
 
   defaultPackage = packages.conduit-native;
