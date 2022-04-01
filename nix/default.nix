@@ -65,13 +65,13 @@ flake-utils.lib.eachSystem [
   # TODO add meta
 in rec {
   # crate2nix - better incremental builds, but uses ifd
-  packages.conduit = crate2nixPkgs.callPackage ./crate2nix.nix {
-    inherit
-      name
-      src
-      crate2nix
-      ;
-  };
+  #packages.conduit = crate2nixPkgs.callPackage ./crate2nix.nix {
+    #inherit
+      #name
+      #src
+      #crate2nix
+      #;
+  #};
 
   # native nixpkgs support - keep supported
   packages.conduit-native = (pkgs.makeRustPlatform {inherit cargo rustc;}).buildRustPackage {
