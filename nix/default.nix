@@ -78,6 +78,8 @@ in rec {
     inherit
       src
       name
+      buildInputs
+      nativeBuildInputs
       ;
     cargoLock = {
       lockFile = src + "/Cargo.lock";
