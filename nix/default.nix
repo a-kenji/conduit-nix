@@ -78,7 +78,7 @@ in rec {
       buildInputs
       nativeBuildInputs
       ;
-     LIBCLANG_PATH= pkgs.lib.makeLibraryPath [ pkgs.llvmPackages_latest.libclang.lib ];
+    LIBCLANG_PATH = pkgs.lib.makeLibraryPath [pkgs.llvmPackages_latest.libclang.lib];
     cargoLock = {
       lockFile = src + "/Cargo.lock";
       outputHashes = {
