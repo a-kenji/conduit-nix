@@ -44,18 +44,15 @@ flake-utils.lib.eachSystem [
   rustc = rustToolchainToml;
 
   buildInputs = [
-    rustToolchainToml
-
-    pkgs.libclang
-    pkgs.openssl
+    pkgs.rocksdb
   ];
 
   nativeBuildInputs = [
-    # for openssl/openssl-sys
-    pkgs.pkg-config
+    pkgs.rustPlatform.bindgenHook
   ];
 
   devInputs = [
+    rustToolchainToml
   ];
 
   fmtInputs = [
@@ -81,6 +78,7 @@ in rec {
       buildInputs
       nativeBuildInputs
       ;
+     LIBCLANG_PATH= pkgs.lib.makeLibraryPath [ pkgs.llvmPackages_latest.libclang.lib ];
     cargoLock = {
       lockFile = src + "/Cargo.lock";
       outputHashes = {
