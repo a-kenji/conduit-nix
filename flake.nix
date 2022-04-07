@@ -1,5 +1,5 @@
 {
-  description = "Conduit Nix SHell";
+  description = "Conduit Nix Shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
