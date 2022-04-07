@@ -108,14 +108,15 @@ flake-utils.lib.eachSystem [
     };
 
     devShell = devShells.conduit;
-
-    overlays = {
-      default = final: prev: rec {
-        conduit = packages.${prev.system}.conduit;
-      };
-      nightly = final: prev: rec {
-        conduit-nightly = packages.${prev.system}.conduit;
-      };
-    };
   }
 )
+// rec {
+  overlays = {
+    default = final: prev: rec {
+      conduit = self.packages.${prev.system}.conduit;
+    };
+    nightly = final: prev: rec {
+      conduit-nightly = self.packages.${prev.system}.conduit;
+    };
+  };
+}
