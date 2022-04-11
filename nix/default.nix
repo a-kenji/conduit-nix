@@ -72,7 +72,7 @@ flake-utils.lib.eachSystem [
     #};
 
     # native nixpkgs support - keep supported
-    packages.conduit-native = (pkgs.makeRustPlatform {inherit cargo rustc;}).buildRustPackage {
+    packages.default = (pkgs.makeRustPlatform {inherit cargo rustc;}).buildRustPackage {
       inherit
         src
         name
@@ -90,14 +90,12 @@ flake-utils.lib.eachSystem [
       };
     };
 
-    defaultPackage = packages.conduit-native;
-
     # nix run
     apps.conduit = flake-utils.lib.mkApp {drv = packages.conduit;};
     defaultApp = apps.conduit;
 
     devShells = {
-      conduit = pkgs.callPackage ./devShell.nix {
+      default = pkgs.callPackage ./devShell.nix {
         inherit buildInputs;
         nativeBuildInputs = nativeBuildInputs ++ devInputs ++ fmtInputs;
       };
@@ -106,8 +104,6 @@ flake-utils.lib.eachSystem [
         nativeBuildInputs = fmtInputs;
       };
     };
-
-    devShell = devShells.conduit;
   }
 )
 // rec {
