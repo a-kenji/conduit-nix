@@ -85,7 +85,7 @@ flake-utils.lib.eachSystem [
         outputHashes = {
           "heed-0.10.6" = "sha256-rm02pJ6wGYN4SsAbp85jBVHDQ5ITjZZd+79EC2ubRsY=";
           "reqwest-0.11.9" = "sha256-wH/q7REnkz30ENBIK5Rlxnc1F6vOyuEANMHFmiVPaGw";
-          "ruma-0.4.0" = "sha256-gRhhGWpMiLeA8TNgBMsFEBky1TISr/GXNxLpTXLgUQE";
+          "ruma-0.5.0" = "sha256-srmybII7j3xkSDVFvIiWUQnZsW+vEKKagSZhA5MRRQc";
         };
       };
     };
